@@ -1,30 +1,24 @@
 ---
-import { FOOTER_LINKS, SOCIAL } from '../data';
+import { FOOTER_LINKS, SOCIAL, SOCIAL_ICON_PATHS } from '../data';
 
 const year = new Date().getFullYear();
-
-// Inline SVGs (no icon package dependency, zero client JS).
-const ICONS: Record<string, string> = {
-  instagram:
-    'M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z',
-  facebook: 'M7 10v4h3v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3V3h-3a5 5 0 0 0-5 5v2H7',
-};
+const ICONS = SOCIAL_ICON_PATHS;
 ---
 
 <footer class="border-t border-gray-200">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="grid grid-cols-12 gap-4 gap-y-8 py-8 sm:gap-8 md:py-12">
       <div class="col-span-12 lg:col-span-4">
-        <a class="inline-block text-xl font-bold" href="/">Fresh Beginnings Publishing, LLC</a>
+        <a class="font-display inline-block text-xl font-semibold text-green-800" href="/">Fresh Beginnings Publishing, LLC</a>
       </div>
 
       <div class="col-span-6 md:col-span-3 lg:col-span-2">
-        <div class="mb-2 font-medium">Product</div>
+        <div class="text-muted mb-3 text-xs font-semibold tracking-wider uppercase">Product</div>
         <ul class="text-sm">
           {
             FOOTER_LINKS.product.map((link) => (
               <li class="mb-2">
-                <a class="text-muted transition duration-150 ease-in-out hover:text-gray-700 hover:underline" href={link.href}>
+                <a class="text-muted decoration-ochre/60 underline-offset-4 transition-colors duration-150 hover:text-green-800 hover:underline" href={link.href}>
                   {link.text}
                 </a>
               </li>
@@ -34,12 +28,12 @@ const ICONS: Record<string, string> = {
       </div>
 
       <div class="col-span-6 md:col-span-3 lg:col-span-2">
-        <div class="mb-2 font-medium">Company</div>
+        <div class="text-muted mb-3 text-xs font-semibold tracking-wider uppercase">Company</div>
         <ul class="text-sm">
           {
             FOOTER_LINKS.company.map((link) => (
               <li class="mb-2">
-                <a class="text-muted transition duration-150 ease-in-out hover:text-gray-700 hover:underline" href={link.href}>
+                <a class="text-muted decoration-ochre/60 underline-offset-4 transition-colors duration-150 hover:text-green-800 hover:underline" href={link.href}>
                   {link.text}
                 </a>
               </li>
@@ -55,7 +49,7 @@ const ICONS: Record<string, string> = {
           SOCIAL.map((social) => (
             <li>
               <a
-                class="text-muted inline-flex items-center rounded-lg p-2.5 text-sm hover:bg-gray-100"
+                class="text-muted hover:text-ochre inline-flex items-center rounded-lg p-2.5 text-sm transition-colors hover:bg-green-800/5"
                 aria-label={social.label}
                 href={social.href}
               >
@@ -76,7 +70,7 @@ const ICONS: Record<string, string> = {
       </ul>
 
       <div class="text-muted text-sm">
-        © {year} <a class="text-blue-600 hover:underline" href="https://freshbeginningspublishing.com/">Fresh Beginnings Publishing, LLC.</a> All rights reserved.
+        © {year} <a class="decoration-ochre/60 text-green-800 underline-offset-4 hover:underline" href="https://freshbeginningspublishing.com/">Fresh Beginnings Publishing, LLC.</a> All rights reserved.
       </div>
     </div>
   </div>

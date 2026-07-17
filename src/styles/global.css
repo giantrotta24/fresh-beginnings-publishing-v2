@@ -1,16 +1,18 @@
 @import "tailwindcss";
+@import "@fontsource/fraunces/600.css";
 
-/* Palette carried over from the original site's CSS custom properties
-   (src/components/CustomStyles.astro in the v1 repo) for visual parity. */
+/* Palette: the mint paper background carries over from v1. The ink is deepened
+   toward forest green, and the single accent — ochre — is sampled from the
+   mushroom caps in the hero illustration. Display face: Fraunces 600 only. */
 @theme {
-  --color-primary: #1ecbe1;
-  --color-secondary: #4bd5e7;
-  --color-accent: #1e6ae1;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --color-ochre: #b07a24;
+  --color-moss-soft: #ddeee3;
 }
 
 :root {
-  --color-text-page: rgb(8 13 24);
-  --color-text-muted: rgb(75 94 99);
+  --color-text-page: rgb(20 40 28);
+  --color-text-muted: rgb(74 92 82);
   --color-bg-page: rgb(245 255 250);
 }
 
@@ -23,6 +25,27 @@
     @apply antialiased tracking-tight;
     color: var(--color-text-page);
     background-color: var(--color-bg-page);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: #ddeee3;
+    color: rgb(20 40 28);
+  }
+
+  :focus-visible {
+    outline: 2px solid #166534;
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 }
 

@@ -3,11 +3,17 @@ import { Image } from 'astro:assets';
 import mushImage from '../assets/images/mush.png';
 ---
 
-<section class="relative">
+<section class="relative isolate">
+  {/* A wishing star streaks across the hero every so often — a nod to the book's
+      night-sky theme. Pure CSS, behind the content, off under reduced motion. */}
+  <div class="stars pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+    <span class="shooting-star star-1"></span>
+    <span class="shooting-star star-2"></span>
+  </div>
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="py-12 md:py-20 lg:flex lg:items-center lg:justify-around lg:gap-8 lg:py-24">
       <div class="mx-auto pb-10 text-center md:pb-16 lg:mx-0 lg:max-w-xl lg:text-left xl:max-w-2xl">
-        <h1 class="mb-4 text-5xl font-bold leading-tight tracking-tight md:text-6xl lg:text-5xl xl:text-6xl">
+        <h1 class="font-display mb-4 text-5xl font-semibold leading-tight tracking-tight md:text-6xl lg:text-5xl xl:text-6xl">
           Welcome to <span class="text-green-800">Fresh</span>{' '}<span class="lg:whitespace-nowrap"
             ><span class="text-green-800">Beginnings</span> Publishing</span
           >
@@ -18,12 +24,30 @@ import mushImage from '../assets/images/mush.png';
       </div>
       <div>
         <div class="relative mx-auto max-w-lg lg:max-w-md xl:max-w-lg">
+          {/* Forest-floor shape sampled from the illustration's own palette: soft moss with a faint ochre shadow, hand-drawn rather than a perfect ellipse. */}
+          <svg
+            class="absolute inset-0 h-full w-full text-[#ddeee3]"
+            viewBox="0 0 200 200"
+            aria-hidden="true"
+          >
+            <path
+              fill="#b07a24"
+              opacity="0.1"
+              transform="translate(106,108) rotate(-24) scale(1.02,0.88)"
+              d="M45.7,-58.9C58.9,-49.5,68.9,-35.3,72.9,-19.4C76.9,-3.5,74.8,14.1,66.6,27.6C58.4,41.1,44.1,50.6,29.2,57.4C14.3,64.1,-1.2,68.2,-16.9,65.4C-32.7,62.6,-48.6,53,-58.1,39.2C-67.6,25.4,-70.6,7.4,-67.4,-9.1C-64.2,-25.6,-54.7,-40.7,-41.8,-50.2C-28.9,-59.7,-12.4,-63.6,2.5,-66.7C17.5,-69.8,35,-72,45.7,-58.9Z"
+            />
+            <path
+              fill="currentColor"
+              transform="translate(100,102) rotate(-18) scale(1.04,0.9)"
+              d="M45.7,-58.9C58.9,-49.5,68.9,-35.3,72.9,-19.4C76.9,-3.5,74.8,14.1,66.6,27.6C58.4,41.1,44.1,50.6,29.2,57.4C14.3,64.1,-1.2,68.2,-16.9,65.4C-32.7,62.6,-48.6,53,-58.1,39.2C-67.6,25.4,-70.6,7.4,-67.4,-9.1C-64.2,-25.6,-54.7,-40.7,-41.8,-50.2C-28.9,-59.7,-12.4,-63.6,2.5,-66.7C17.5,-69.8,35,-72,45.7,-58.9Z"
+            />
+          </svg>
           <Image
             src={mushImage}
             alt="Mushroom Hero Image"
             widths={[400, 768, 1024, 1080]}
             sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, 1024px"
-            class="mx-auto w-full rounded-md"
+            class="relative mx-auto w-full"
             loading="eager"
             format="webp"
           />
@@ -32,3 +56,93 @@ import mushImage from '../assets/images/mush.png';
     </div>
   </div>
 </section>
+
+<style>
+  /* The head (::after) sits at the left end of the trail; the element is tilted
+     so the star travels down-and-left, like a wish crossing the treetops. */
+  .shooting-star {
+    position: absolute;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      rgba(176, 122, 36, 0.9),
+      rgba(176, 122, 36, 0.45) 45%,
+      rgba(176, 122, 36, 0)
+    );
+    opacity: 0;
+  }
+
+  .shooting-star::after {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    margin-top: -4px;
+    border-radius: 50%;
+    background: #d99a3d;
+    box-shadow: 0 0 12px 3px rgba(176, 122, 36, 0.7);
+  }
+
+  .star-1 {
+    top: 9%;
+    right: 4%;
+    width: 140px;
+    animation: shoot-long 12s linear 2s infinite;
+  }
+
+  .star-2 {
+    top: 4%;
+    right: 34%;
+    width: 90px;
+    animation: shoot-short 14s linear 8.5s infinite;
+  }
+
+  /* The streak lives in the first ~9% of the cycle; the rest is quiet sky. */
+  /* rotate(-Ndeg) tips the head end (left) downward so the star leads
+     and the trail streams up-and-right behind it — matching the travel
+     direction of translate3d(-x, +y). */
+  @keyframes shoot-long {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) rotate(-20deg);
+    }
+    1.5% {
+      opacity: 1;
+    }
+    9% {
+      opacity: 0;
+      transform: translate3d(-44vw, 16vw, 0) rotate(-20deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translate3d(-44vw, 16vw, 0) rotate(-20deg);
+    }
+  }
+
+  @keyframes shoot-short {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 0, 0) rotate(-24deg);
+    }
+    1.5% {
+      opacity: 0.8;
+    }
+    7% {
+      opacity: 0;
+      transform: translate3d(-26vw, 11.5vw, 0) rotate(-24deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translate3d(-26vw, 11.5vw, 0) rotate(-24deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .shooting-star {
+      display: none;
+    }
+  }
+</style>

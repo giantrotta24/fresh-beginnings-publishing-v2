@@ -6,12 +6,12 @@
 import { NAV_LINKS } from '../data';
 
 const navLinkClass =
-  'rounded-md border border-transparent px-4 py-3 font-bold text-green-800 transition hover:border-green-800 hover:text-green-600';
+  'relative px-4 py-3 font-bold text-green-800 transition-colors hover:text-green-600 after:absolute after:inset-x-4 after:bottom-1.5 after:h-[2px] after:origin-left after:scale-x-0 after:rounded-full after:bg-ochre after:transition-transform after:duration-200 hover:after:scale-x-100 motion-reduce:after:transition-none';
 ---
 
-<header class="sticky top-0 z-40 w-full border-b border-gray-200 bg-[rgb(245,255,250)]/90 backdrop-blur-sm">
+<header class="sticky top-0 z-40 w-full border-b border-green-800/10 bg-[rgb(245,255,250)]">
   <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between px-4 py-3 md:flex-nowrap md:px-6">
-    <a class="self-center whitespace-nowrap text-xl font-bold text-green-800 md:text-2xl" href="/">
+    <a class="font-display self-center whitespace-nowrap text-xl font-semibold text-green-800 md:text-2xl" href="/">
       Fresh Beginnings
     </a>
 
@@ -40,9 +40,9 @@ const navLinkClass =
                   <path d="m6 9 6 6 6-6" />
                 </svg>
               </span>
-              <div class="pl-4 md:absolute md:z-50 md:hidden md:min-w-[200px] md:rounded md:bg-white md:pl-0 md:drop-shadow-xl md:group-hover:block">
+              <div class="pl-4 md:absolute md:z-50 md:hidden md:min-w-[200px] md:rounded-lg md:border md:border-green-800/10 md:bg-[rgb(245,255,250)] md:py-1 md:pl-0 md:shadow-[0_1px_2px_rgba(17,17,17,0.05),0_6px_16px_rgba(17,17,17,0.06)] md:group-hover:block">
                 {link.links.map((sub) => (
-                  <a class="block px-4 py-2 text-sm text-green-800 hover:bg-gray-100 hover:text-green-600 md:whitespace-nowrap" href={sub.href}>
+                  <a class="block px-4 py-2 text-sm text-green-800 transition-colors hover:bg-green-800/5 hover:text-green-600 md:whitespace-nowrap" href={sub.href}>
                     {sub.text}
                   </a>
                 ))}
