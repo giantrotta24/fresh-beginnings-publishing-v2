@@ -4,16 +4,21 @@
 // a tap toggles it on touch devices at desktop widths (iPads hit the md: nav but
 // never hover); pointer hover still opens it, and the checkbox keeps it
 // keyboard-reachable. Below md it stays flattened (always visible) in the
-// stacked menu.
+// stacked menu. Hover-capable devices get hover/keyboard only — the label
+// ignores clicks there (so the menu can't be pinned open), which is why the
+// underline hover effect rides group-hover instead of the label's own hover.
+// The transparent fixed scrim label closes the open menu on any outside tap.
 import { NAV_LINKS } from '../data';
 
+// z-40 keeps every nav item above the dropdown's close-scrim (z-30, same
+// stacking context), so links stay directly tappable while the menu is open.
 const navLinkClass =
-  'relative px-4 py-3 font-bold text-green-800 transition-colors hover:text-green-600 after:absolute after:inset-x-4 after:bottom-1.5 after:h-[2px] after:origin-left after:scale-x-0 after:rounded-full after:bg-ochre after:transition-transform after:duration-200 hover:after:scale-x-100 motion-reduce:after:transition-none';
+  'relative z-40 px-4 py-3 font-bold text-green-800 transition-colors hover:text-green-600 after:absolute after:inset-x-4 after:bottom-1.5 after:h-[2px] after:origin-left after:scale-x-0 after:rounded-full after:bg-ochre after:transition-transform after:duration-200 hover:after:scale-x-100 motion-reduce:after:transition-none';
 ---
 
 <header class="sticky top-0 z-40 w-full border-b border-green-800/10 bg-[rgb(245,255,250)]">
   <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between px-4 py-3 md:flex-nowrap md:px-6">
-    <a class="font-display self-center whitespace-nowrap text-xl font-semibold text-green-800 md:text-2xl" href="/">
+    <a class="font-display relative z-40 self-center whitespace-nowrap text-xl font-semibold text-green-800 md:text-2xl" href="/">
       Fresh Beginnings
     </a>
 
@@ -45,9 +50,10 @@ const navLinkClass =
           return (
             <div class="group relative">
               <input type="checkbox" id={menuId} class="peer sr-only" />
+              <label for={menuId} aria-hidden="true" class="fixed inset-0 z-30 hidden cursor-default md:peer-checked:block" />
               <label
                 for={menuId}
-                class={`${navLinkClass} flex cursor-pointer items-center gap-1 peer-focus-visible:outline-2 peer-focus-visible:outline-green-800 peer-focus-visible:outline-offset-[3px]`}
+                class={`${navLinkClass} flex cursor-pointer items-center gap-1 peer-focus-visible:outline-2 peer-focus-visible:outline-green-800 peer-focus-visible:outline-offset-[3px] group-hover:text-green-600 group-hover:after:scale-x-100 [@media(hover:hover)]:pointer-events-none`}
               >
                 {link.text}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="hidden h-3.5 w-3.5 md:inline" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
