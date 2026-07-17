@@ -52,8 +52,11 @@ import mushImage from '../assets/images/mush.png';
           say hello — we'd love to hear from you.
         </p>
 
+        {/* Fluid font size: the email is one long unbreakable word, so the
+            button text scales down on narrow phones (12px at 320px) instead of
+            overflowing full-bleed; caps at the shared button size from ~420px up. */}
         <a
-          class="mt-8 inline-block rounded-lg bg-green-800 px-6 py-3 font-bold text-[rgb(245,255,250)] transition hover:-translate-y-px hover:bg-green-700 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+          class="mt-8 inline-block rounded-lg bg-green-800 px-6 py-3 text-[clamp(0.75rem,3.8vw,1rem)] font-bold text-[rgb(245,255,250)] transition hover:-translate-y-px hover:bg-green-700 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
           href={`mailto:${CONTACT_EMAIL}`}
         >
           {CONTACT_EMAIL}
