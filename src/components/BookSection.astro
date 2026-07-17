@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import { BOOK } from '../consts';
+import bookCoverImage from '../assets/images/book-cover.png';
+---
+
+<section class="border-t border-green-800/10 bg-green-50 py-10 md:py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+    <div class="md:flex md:items-center md:gap-16">
+      <div class="md:basis-1/2">
+        <div class="relative mx-auto max-w-xs md:max-w-sm">
+          {/* Same forest-floor shape as the hero and contact page, tilted differently so it rhymes rather than repeats. */}
+          <svg
+            class="absolute inset-0 h-full w-full text-[#ddeee3]"
+            viewBox="0 0 200 200"
+            aria-hidden="true"
+          >
+            <path
+              fill="#b07a24"
+              opacity="0.1"
+              transform="translate(100,112) rotate(10) scale(1.02,0.88)"
+              d="M45.7,-58.9C58.9,-49.5,68.9,-35.3,72.9,-19.4C76.9,-3.5,74.8,14.1,66.6,27.6C58.4,41.1,44.1,50.6,29.2,57.4C14.3,64.1,-1.2,68.2,-16.9,65.4C-32.7,62.6,-48.6,53,-58.1,39.2C-67.6,25.4,-70.6,7.4,-67.4,-9.1C-64.2,-25.6,-54.7,-40.7,-41.8,-50.2C-28.9,-59.7,-12.4,-63.6,2.5,-66.7C17.5,-69.8,35,-72,45.7,-58.9Z"
+            />
+            <path
+              fill="currentColor"
+              transform="translate(104,104) rotate(6) scale(1.04,0.9)"
+              d="M45.7,-58.9C58.9,-49.5,68.9,-35.3,72.9,-19.4C76.9,-3.5,74.8,14.1,66.6,27.6C58.4,41.1,44.1,50.6,29.2,57.4C14.3,64.1,-1.2,68.2,-16.9,65.4C-32.7,62.6,-48.6,53,-58.1,39.2C-67.6,25.4,-70.6,7.4,-67.4,-9.1C-64.2,-25.6,-54.7,-40.7,-41.8,-50.2C-28.9,-59.7,-12.4,-63.6,2.5,-66.7C17.5,-69.8,35,-72,45.7,-58.9Z"
+            />
+          </svg>
+          <Image
+            src={bookCoverImage}
+            alt={`Book cover for ${BOOK.title} by ${BOOK.author}`}
+            widths={[320, 480, 640]}
+            sizes="(max-width: 767px) 320px, 384px"
+            class="relative mx-auto w-full -rotate-2 rounded shadow-lg"
+            format="webp"
+          />
+        </div>
+      </div>
+      <div class="mt-10 text-center md:mt-0 md:basis-1/2 md:text-left">
+        <div class="text-muted mb-3 text-xs font-semibold tracking-wider uppercase">Our first story</div>
+        <h2 class="font-display mb-4 text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+          {BOOK.title}
+        </h2>
+        <p class="text-muted mx-auto max-w-md text-lg md:mx-0">
+          Rusty is a brave little raccoon who isn't so sure about the dark — until a nighttime
+          adventure helps him see it differently. It's a gentle story for any child working up the
+          courage to face what scares them.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-4 md:flex-row md:items-center md:gap-6">
+          <a
+            class="inline-block rounded-lg bg-green-800 px-6 py-3 font-bold text-[rgb(245,255,250)] transition hover:-translate-y-px hover:bg-green-700 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+            href={BOOK.amazonUrl}
+          >
+            Get the book on Amazon
+          </a>
+          <a
+            class="text-muted decoration-ochre/60 underline-offset-4 transition-colors duration-150 hover:text-green-800 hover:underline"
+            href={BOOK.url}
+          >
+            Visit Rusty's own site
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
