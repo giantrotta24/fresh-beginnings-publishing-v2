@@ -3,8 +3,10 @@ import { Image } from 'astro:assets';
 import rustyLogImage from '../assets/images/rusty-log.png';
 ---
 
-<section class="bg-green-50 py-12 md:py-20">
-  <div class="mx-auto max-w-7xl p-4 md:px-8">
+{/* flex-1 lets the green band absorb leftover viewport height on tall screens
+    (main is a flex column), so the page background never shows through above the footer. */}
+<section class="flex flex-1 items-center bg-green-50 py-12 md:py-20">
+  <div class="mx-auto w-full max-w-7xl p-4 md:px-8">
     <div class="md:flex md:items-center md:gap-16">
       <div class="md:basis-1/2">
         <p class="text-muted mb-3 text-xs font-semibold tracking-wider uppercase">The Publisher</p>
