@@ -33,9 +33,11 @@ const navLinkClass =
       </svg>
     </label>
 
+    {/* Below md the open menu overlays the page (absolute under the sticky
+        header bar) instead of growing the header and pushing content down. */}
     <nav
       aria-label="Main navigation"
-      class="order-last hidden w-full basis-full flex-col gap-1 py-2 peer-checked:flex md:order-none md:flex md:w-auto md:basis-auto md:flex-row md:items-center md:py-0"
+      class="absolute inset-x-0 top-full hidden flex-col gap-1 border-b border-green-800/10 bg-[rgb(245,255,250)] px-4 py-2 shadow-[0_1px_2px_rgba(17,17,17,0.05),0_6px_16px_rgba(17,17,17,0.06)] peer-checked:flex md:static md:flex md:w-auto md:flex-row md:items-center md:border-b-0 md:bg-transparent md:p-0 md:shadow-none"
     >
       {
         NAV_LINKS.map((link) => {
