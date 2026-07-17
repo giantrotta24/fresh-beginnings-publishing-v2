@@ -21,11 +21,6 @@ export const BOOK = {
 
 export const SOCIAL_LINKS = [
   {
-    label: 'Instagram',
-    href: 'https://instagram.com/freshbeginningscommunity?igshid=MzRlODBiNWFlZA==',
-    icon: 'instagram',
-  },
-  {
     label: 'Facebook',
     href: 'https://www.facebook.com/groups/360330059436123',
     icon: 'facebook',
