@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+/* Palette carried over from the original site's CSS custom properties
+   (src/components/CustomStyles.astro in the v1 repo) for visual parity. */
+@theme {
+  --color-primary: #1ecbe1;
+  --color-secondary: #4bd5e7;
+  --color-accent: #1e6ae1;
+}
+
+:root {
+  --color-text-page: rgb(8 13 24);
+  --color-text-muted: rgb(75 94 99);
+  --color-bg-page: rgb(245 255 250);
+}
+
+@layer base {
+  html {
+    background-color: #f6f6f6;
+  }
+
+  body {
+    @apply antialiased tracking-tight;
+    color: var(--color-text-page);
+    background-color: var(--color-bg-page);
+  }
+}
+
+@layer components {
+  .text-page {
+    color: var(--color-text-page);
+  }
+
+  .text-muted {
+    color: var(--color-text-muted);
+  }
+}

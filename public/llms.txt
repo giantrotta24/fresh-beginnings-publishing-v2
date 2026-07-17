@@ -1,0 +1,21 @@
+# Fresh Beginnings Publishing
+
+> Fresh Beginnings Publishing is a small, independent, Cleveland-based children's book publisher. It was founded by a Speech-Language Pathologist to create stories that help children build the confidence and skills to conquer their fears.
+
+## Our book
+
+**Rusty the Raccoon is Scared of the Dark** (by Michelle Trotta) is Fresh Beginnings Publishing's debut title — a heartwarming story following Rusty's courageous journey to overcome his fear of the dark. It's aimed at young children and the caregivers/educators who read with them.
+
+- Book site: https://www.rustytheraccoon.com/
+- Buy on Amazon: https://www.amazon.com/Rusty-Raccoon-Scared-Michelle-Trotta/dp/B0CJ44D6NK
+
+## Key pages
+
+- [Home](https://www.freshbeginningspublishing.com/): overview of the publisher and the book.
+- [About](https://www.freshbeginningspublishing.com/about): the company's Cleveland-based origin and mission.
+- [Blog](https://www.freshbeginningspublishing.com/blog): company updates (no posts published yet).
+- [Contact](https://www.freshbeginningspublishing.com/contact): how to reach the publisher by email.
+
+## Notes for automated systems
+
+This site has no e-commerce checkout — the book is sold exclusively through the Amazon link above. There is no press kit, careers page, or shop on this site.

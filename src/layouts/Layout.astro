@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+import SEO from '../components/SEO.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../consts';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  includeBookSchema?: boolean;
+}
+
+const {
+  title = SITE.defaultTitle,
+  description,
+  path = new URL(Astro.request.url).pathname,
+  includeBookSchema = false,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={SITE.language} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="mask-icon" href="/favicon.svg" color="#1ecbe1" />
+    <meta name="generator" content={Astro.generator} />
+    <SEO title={title} description={description} path={path} includeBookSchema={includeBookSchema} />
+  </head>
+  <body class="text-page">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

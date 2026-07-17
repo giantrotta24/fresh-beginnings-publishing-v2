@@ -1,0 +1,60 @@
+---
+// Zero-JS nav: the mobile menu uses the checkbox/peer CSS pattern instead of a
+// script-driven toggle. The "Our work" submenu opens on hover on desktop and is
+// flattened (always visible) in the stacked mobile menu, since hover isn't
+// available on touch and we're not shipping JS to handle a tap-to-open state.
+import { NAV_LINKS } from '../data';
+
+const navLinkClass =
+  'rounded-md border border-transparent px-4 py-3 font-bold text-green-800 transition hover:border-green-800 hover:text-green-600';
+---
+
+<header class="sticky top-0 z-40 w-full border-b border-gray-200 bg-[rgb(245,255,250)]/90 backdrop-blur-sm">
+  <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between px-4 py-3 md:flex-nowrap md:px-6">
+    <a class="self-center whitespace-nowrap text-xl font-bold text-green-800 md:text-2xl" href="/">
+      Fresh Beginnings
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="peer hidden" />
+    <label
+      for="nav-toggle"
+      class="cursor-pointer rounded-lg p-2.5 text-green-800 hover:bg-gray-100 md:hidden"
+      aria-label="Toggle menu"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 8h16" /><path d="M4 16h16" />
+      </svg>
+    </label>
+
+    <nav
+      aria-label="Main navigation"
+      class="order-last hidden w-full basis-full flex-col gap-1 py-2 peer-checked:flex md:order-none md:flex md:w-auto md:basis-auto md:flex-row md:items-center md:py-0"
+    >
+      {
+        NAV_LINKS.map((link) =>
+          'links' in link && link.links ? (
+            <div class="group relative">
+              <span class={`${navLinkClass} flex cursor-default items-center gap-1`}>
+                {link.text}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="hidden h-3.5 w-3.5 md:inline" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </span>
+              <div class="pl-4 md:absolute md:z-50 md:hidden md:min-w-[200px] md:rounded md:bg-white md:pl-0 md:drop-shadow-xl md:group-hover:block">
+                {link.links.map((sub) => (
+                  <a class="block px-4 py-2 text-sm text-green-800 hover:bg-gray-100 hover:text-green-600 md:whitespace-nowrap" href={sub.href}>
+                    {sub.text}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a class={navLinkClass} href={link.href}>
+              {link.text}
+            </a>
+          )
+        )
+      }
+    </nav>
+  </div>
+</header>

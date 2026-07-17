@@ -1,0 +1,16 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<section class="py-10 md:py-16">
+  <div class="mx-auto max-w-2xl px-4 sm:px-6">
+    <div class="flex flex-col items-center py-12 text-center md:py-20">
+      <h2 class="mb-4 text-4xl font-bold leading-tight tracking-tight md:mb-8 md:text-5xl">{title}</h2>
+      <p class="text-muted text-xl">Coming Soon!</p>
+    </div>
+  </div>
+</section>
