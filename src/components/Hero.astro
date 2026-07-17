@@ -23,7 +23,7 @@ import mushImage from '../assets/images/mush.png';
         </div>
       </div>
       <div>
-        <div class="hero-art relative mx-auto max-w-lg lg:max-w-md xl:max-w-lg">
+        <div class="wiggle-group relative mx-auto max-w-lg lg:max-w-md xl:max-w-lg">
           {/* Forest-floor shape sampled from the illustration's own palette: soft moss with a faint ochre shadow, hand-drawn rather than a perfect ellipse. */}
           <svg
             class="absolute inset-0 h-full w-full text-[#ddeee3]"
@@ -47,7 +47,7 @@ import mushImage from '../assets/images/mush.png';
             alt="Mushroom Hero Image"
             widths={[400, 768, 1024, 1080]}
             sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, 1024px"
-            class="hero-mush relative mx-auto w-full"
+            class="wiggle-item relative mx-auto w-full"
             loading="eager"
             format="webp"
           />
@@ -140,42 +140,11 @@ import mushImage from '../assets/images/mush.png';
     }
   }
 
-  /* Rooted at the stems, so a hover reads as a sway rather than a spin.
-     Runs once per hover entry; hovering off and on again replays it. */
-  .hero-mush {
-    transform-origin: 50% 88%;
-  }
-
-  .hero-art:hover .hero-mush {
-    animation: mush-wiggle 0.7s ease-in-out;
-  }
-
-  @keyframes mush-wiggle {
-    0%,
-    100% {
-      transform: rotate(0deg);
-    }
-    20% {
-      transform: rotate(-3deg);
-    }
-    45% {
-      transform: rotate(2.5deg);
-    }
-    70% {
-      transform: rotate(-1.5deg);
-    }
-    85% {
-      transform: rotate(0.75deg);
-    }
-  }
-
+  /* The hover wiggle itself is shared with the contact page — see
+     .wiggle-group / .wiggle-item in global.css. */
   @media (prefers-reduced-motion: reduce) {
     .shooting-star {
       display: none;
-    }
-
-    .hero-art:hover .hero-mush {
-      animation: none;
     }
   }
 </style>
