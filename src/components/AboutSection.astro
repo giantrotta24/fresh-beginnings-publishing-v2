@@ -3,14 +3,13 @@ import { Image } from 'astro:assets';
 import rustyLogImage from '../assets/images/rusty-log.png';
 ---
 
-<section class="bg-green-50 py-10 md:py-16">
+<section class="bg-green-50 py-12 md:py-20">
   <div class="mx-auto max-w-7xl p-4 md:px-8">
-    <div class="mb-10 max-w-3xl text-center md:mx-auto md:mb-12">
-      <h2 class="font-display mb-4 text-4xl font-semibold leading-tight tracking-tight md:text-5xl">About us</h2>
-    </div>
-    <div class="md:flex md:gap-16">
-      <div class="self-center md:basis-1/2">
-        <div class="text-muted mx-auto max-w-3xl text-left text-xl">
+    <div class="md:flex md:items-center md:gap-16">
+      <div class="md:basis-1/2">
+        <p class="text-muted mb-3 text-xs font-semibold tracking-wider uppercase">The Publisher</p>
+        <h2 class="font-display mb-6 text-4xl font-semibold leading-tight tracking-tight md:text-5xl">About us</h2>
+        <div class="text-muted max-w-3xl text-xl">
           <p>
             At <span class="font-semibold">Fresh Beginnings Publishing</span>, we are a Cleveland-based publishing
             company dedicated to creating books that captivate the hearts and minds of children. Our mission is to
@@ -18,11 +17,10 @@ import rustyLogImage from '../assets/images/rusty-log.png';
             journeys to conquer their fears. With a focus on creativity and storytelling, our books offer engaging
             and thought-provoking experiences for children of all ages.
           </p>
-          <br />
-          <p>
+          <p class="mt-6">
             Founded by a Speech-Language Pathologist, our stories aim to empower caregivers and educators to help
-            children develop the skills they need to succeed. We believe that every child deserves the opportunity
-            to learn and grow. Each page is crafted with care to ignite the love for reading, foster imagination,
+            children develop the skills they need to succeed. We believe that <span class="text-ochre italic">every child deserves the opportunity
+            to learn and grow</span>. Each page is crafted with care to ignite the love for reading, foster imagination,
             and encourage personal growth. Join us on this extraordinary journey as we bring these captivating
             stories to life. Explore our collection now!
           </p>
@@ -30,12 +28,26 @@ import rustyLogImage from '../assets/images/rusty-log.png';
       </div>
       <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2">
         <div class="relative mx-auto max-w-md">
+          {/* Forest-floor shape again, tilted its own way so About rhymes with Home and Contact without repeating either. */}
+          <svg class="absolute inset-0 h-full w-full text-[#ddeee3]" viewBox="0 0 200 200" aria-hidden="true">
+            <path
+              fill="#b07a24"
+              opacity="0.1"
+              transform="translate(96,96) rotate(32) scale(1.05,0.9)"
+              d="M45.7,-58.9C58.9,-49.5,68.9,-35.3,72.9,-19.4C76.9,-3.5,74.8,14.1,66.6,27.6C58.4,41.1,44.1,50.6,29.2,57.4C14.3,64.1,-1.2,68.2,-16.9,65.4C-32.7,62.6,-48.6,53,-58.1,39.2C-67.6,25.4,-70.6,7.4,-67.4,-9.1C-64.2,-25.6,-54.7,-40.7,-41.8,-50.2C-28.9,-59.7,-12.4,-63.6,2.5,-66.7C17.5,-69.8,35,-72,45.7,-58.9Z"
+            />
+            <path
+              fill="currentColor"
+              transform="translate(102,104) rotate(38) scale(1.08,0.92)"
+              d="M45.7,-58.9C58.9,-49.5,68.9,-35.3,72.9,-19.4C76.9,-3.5,74.8,14.1,66.6,27.6C58.4,41.1,44.1,50.6,29.2,57.4C14.3,64.1,-1.2,68.2,-16.9,65.4C-32.7,62.6,-48.6,53,-58.1,39.2C-67.6,25.4,-70.6,7.4,-67.4,-9.1C-64.2,-25.6,-54.7,-40.7,-41.8,-50.2C-28.9,-59.7,-12.4,-63.6,2.5,-66.7C17.5,-69.8,35,-72,45.7,-58.9Z"
+            />
+          </svg>
           <Image
             src={rustyLogImage}
             alt="Rusty Hello Sketch"
             widths={[400, 768]}
             sizes="(max-width: 768px) 100vw, 432px"
-            class="mx-auto w-full"
+            class="relative mx-auto w-full"
             format="webp"
           />
         </div>
