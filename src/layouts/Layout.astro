@@ -31,9 +31,9 @@ const {
     <meta name="generator" content={Astro.generator} />
     <SEO title={title} description={description} path={path} includeBookSchema={includeBookSchema} />
   </head>
-  <body class="text-page">
+  <body class="text-page flex min-h-dvh flex-col">
     <Header />
-    <main>
+    <main class="flex-1">
       <slot />
     </main>
     <Footer />
