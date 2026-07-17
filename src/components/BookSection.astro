@@ -29,14 +29,22 @@ import bookCoverImage from '../assets/images/book-cover.png';
               d="M45.7,-58.9C58.9,-49.5,68.9,-35.3,72.9,-19.4C76.9,-3.5,74.8,14.1,66.6,27.6C58.4,41.1,44.1,50.6,29.2,57.4C14.3,64.1,-1.2,68.2,-16.9,65.4C-32.7,62.6,-48.6,53,-58.1,39.2C-67.6,25.4,-70.6,7.4,-67.4,-9.1C-64.2,-25.6,-54.7,-40.7,-41.8,-50.2C-28.9,-59.7,-12.4,-63.6,2.5,-66.7C17.5,-69.8,35,-72,45.7,-58.9Z"
             />
           </svg>
-          <Image
-            src={bookCoverImage}
-            alt={`Book cover for ${BOOK.title} by ${BOOK.author}`}
-            widths={[320, 480, 640]}
-            sizes="(max-width: 767px) 320px, 384px"
-            class="relative mx-auto w-full -rotate-2 rounded shadow-lg"
-            format="webp"
-          />
+          {/* The cover lifts slightly on hover, shadow deepening beneath it,
+              and links to the book's own site (the button handles Amazon). */}
+          <a
+            href={BOOK.url}
+            aria-label={`Visit the website for ${BOOK.title}`}
+            class="block motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out"
+          >
+            <Image
+              src={bookCoverImage}
+              alt={`Book cover for ${BOOK.title} by ${BOOK.author}`}
+              widths={[320, 480, 640]}
+              sizes="(max-width: 767px) 320px, 384px"
+              class="relative mx-auto w-full -rotate-2 rounded shadow-lg motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-out motion-safe:hover:-translate-y-1.5 motion-safe:hover:shadow-xl"
+              format="webp"
+            />
+          </a>
         </div>
       </div>
       <div class="mt-10 text-center md:mt-0 md:basis-1/2 md:text-left">
